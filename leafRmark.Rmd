@@ -2,6 +2,11 @@
 title: "Interactive Map with Leaflet"
 author: "Sarthak"
 date: "23/10/2020"
+knit: (function(input_file, encoding) {
+  out_dir <- 'docs';
+  rmarkdown::render(input_file,
+ encoding=encoding,
+ output_file=file.path(dirname(input_file), out_dir, 'index.html'))})
 output: ioslides_presentation
 ---
 
@@ -40,7 +45,6 @@ mitLocs %>%
     leaflet() %>% 
     addTiles() %>% 
     addMarkers(popup = namePop, clusterOptions = markerClusterOptions())
-    
 ```
 
 ## The Map Backend
@@ -75,5 +79,8 @@ mitLocs %>%
     addTiles() %>% 
     addMarkers(popup = namePop, 
                clusterOptions = markerClusterOptions())
-    
+# the 'clusterOptions' parameter, and the 'markerClusterOptions()'
+# is used to create clusters of locations points that are too close
+# to each other, and on zooming in, will separate into smaller
+# clusters till the closest possible zoom
 ```
