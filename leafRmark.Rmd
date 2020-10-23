@@ -18,35 +18,6 @@ knitr::opts_chunk$set(echo = FALSE, cache = TRUE)
 
 This presentation contains a map created using *leaflet*, which is a javascript library used to create interactive maps
 
-## The Map
-
-The created map is shown below:
-
-```{r}
-# loading the 'leaflet' library for R
-library(leaflet)
-
-# creating two vectors of certain latitudes and longitudes
-ltds <- c(13.3525, 13.3514, 13.3524)
-lnds <- c(74.7928, 74.7925, 74.7936)
-
-# creating a list of popups for these locations
-namePop <- c("Manipal Institute of Technology Academic Block 1",
-             "MIT Innovation Centre",
-             "Manipal School of Arcitecture and Planning")
-```
-
-```{r}
-# creating a data frame containing the latitudes and longitudes
-mitLocs <- data.frame(lat = ltds, lng = lnds)
-
-# creating the leaflet map for these locations
-mitLocs %>% 
-    leaflet() %>% 
-    addTiles() %>% 
-    addMarkers(popup = namePop, clusterOptions = markerClusterOptions())
-```
-
 ## The Map Backend
 
 The code for the map is shown in this slide and the next:
@@ -85,4 +56,33 @@ mitLocs %>%
 # clusters till the closest possible zoom; this effect can be seen by
 # zooming out in the map till a cluster is formed, and zooming in till
 # the clusters are broken
+```
+
+## The Map
+
+The created map is shown below:
+
+```{r}
+# loading the 'leaflet' library for R
+library(leaflet)
+
+# creating two vectors of certain latitudes and longitudes
+ltds <- c(13.3525, 13.3514, 13.3524)
+lnds <- c(74.7928, 74.7925, 74.7936)
+
+# creating a list of popups for these locations
+namePop <- c("Manipal Institute of Technology Academic Block 1",
+             "MIT Innovation Centre",
+             "Manipal School of Arcitecture and Planning")
+```
+
+```{r}
+# creating a data frame containing the latitudes and longitudes
+mitLocs <- data.frame(lat = ltds, lng = lnds)
+
+# creating the leaflet map for these locations
+mitLocs %>% 
+    leaflet() %>% 
+    addTiles() %>% 
+    addMarkers(popup = namePop, clusterOptions = markerClusterOptions())
 ```
